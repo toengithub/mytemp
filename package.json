@@ -1,7 +1,7 @@
 {
   "name": "mytemp",
   "version": "1.0.0",
-  "description": "",
+  "description": "just for fun",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,13 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^3.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toengithub/mytemp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toengithub/mytemp/issues"
+  },
+  "homepage": "https://github.com/toengithub/mytemp#readme"
 }
