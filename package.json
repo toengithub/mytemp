@@ -13,8 +13,14 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.7.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
     "webpack": "^3.10.0"
   },
   "repository": {
@@ -24,5 +30,10 @@
   "bugs": {
     "url": "https://github.com/toengithub/mytemp/issues"
   },
-  "homepage": "https://github.com/toengithub/mytemp#readme"
+  "homepage": "https://github.com/toengithub/mytemp#readme",
+  "remarks": {
+    "notused": [
+      "react-bootstrap"
+    ]
+  }
 }

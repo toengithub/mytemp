@@ -2,6 +2,7 @@ const path = require('path');
 module.exports = {
     entry:{
         login:'./app/compile/login.js',
+        index:'./app/compile/index.js'
     },
     output:{
         path: path.resolve(__dirname, './dist'),
@@ -16,6 +17,14 @@ module.exports = {
                 query: {
                     presets: ['es2015','react']
                 }
+            },
+            {
+                test: /\.scss$/,
+                loader: ['style-loader','css-loader','sass-loader']
+            },
+            {
+                test: /\.css$/,
+                loader: ['style-loader','css-loader']
             }
         ]
     },
