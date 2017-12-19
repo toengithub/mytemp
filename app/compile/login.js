@@ -6,7 +6,7 @@ class LoginForm extends React.Component {
 
         // 设置 initial state
         let reg = new RegExp("(^|&)mark=([^&]*)(&|$)");
-        var mark = window.location.search.substr(1).match(reg)[2];
+        var mark = window.location.search.length==0?'':window.location.search.substr(1).match(reg)[2];
         this.state = {
             mark: mark
         };
