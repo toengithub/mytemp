@@ -69,17 +69,20 @@ class Section extends React.Component {
         }
         */
         let showStyle = {
-            display:this.state.show==0?"none":"block"
+            display:this.state.show==1&&this.props.active == 7?"block":"none"
+        };
+        let scrollStyle = {
+            overflowY:this.state.show==1&&this.props.active == 7?"hidden":"auto"
         };
         return (
             <section id="main-content">
-                <div className={this.props.active == 1?"active":""}>{this.props.active}1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div className={this.props.active == 7?"active imgcontainer":"imgcontainer"}>
+                <div className={this.props.active == 1?"active contentdiv":"contentdiv"}>{this.props.active}1</div>
+                <div className={"contentdiv"}>2</div>
+                <div className={"contentdiv"}>3</div>
+                <div className={"contentdiv"}>4</div>
+                <div className={"contentdiv"}>5</div>
+                <div className={"contentdiv"}>6</div>
+                <div className={this.props.active == 7?"active imgcontainer contentdiv":"imgcontainer contentdiv"} style={scrollStyle}>
                     <div className="imglist">
                         {this.state.imgs}
                     </div>

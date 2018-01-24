@@ -1,6 +1,6 @@
 #sidebar {
     width: 210px;
-    height: 100%;
+    height: calc(100% - 50px);
     position: fixed;
     background: #424a5d;
     h5 {

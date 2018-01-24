@@ -26573,7 +26573,7 @@ exports = module.exports = __webpack_require__(54)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  height: 50px;\n  background-color: #fefefe; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #fefefe; }\n", ""]);
 
 // exports
 
@@ -39024,7 +39024,7 @@ exports = module.exports = __webpack_require__(54)(undefined);
 
 
 // module
-exports.push([module.i, "#sidebar {\n  width: 210px;\n  height: 100%;\n  position: fixed;\n  background: #424a5d; }\n  #sidebar h5 {\n    color: #f2f2f2;\n    font-weight: 700; }\n  #sidebar ul li {\n    position: relative; }\n  #sidebar .sub-menu > .sub li {\n    padding-left: 32px; }\n  #sidebar .sub-menu > .sub li:last-child {\n    padding-bottom: 10px; }\n\n#sidebar > ul > li > ul.sub {\n  display: none; }\n\n#sidebar > ul > li.active > ul.sub {\n  display: block; }\n\nul.sidebar-menu, ul.sidebar-menu li ul.sub {\n  margin: -2px 0 0;\n  padding: 0; }\n\nul.sidebar-menu {\n  margin-top: 10px; }\n\nul.sidebar-menu li ul.sub li {\n  background: #424a5d;\n  margin-bottom: 0;\n  margin-left: 0;\n  margin-right: 0; }\n\nul.sidebar-menu li ul.sub li:last-child {\n  border-radius: 0 0 4px 4px;\n  -webkit-border-radius: 0 0 4px 4px; }\n\nul.sidebar-menu li ul.sub li a {\n  font-size: 12px;\n  padding: 15px 10px;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #aeb2b7; }\n\nul.sidebar-menu li:nth-child(3) ul.sub {\n  visibility: hidden; }\n\nul.sidebar-menu li ul.sub li a:hover {\n  color: white;\n  background: transparent; }\n\nul.sidebar-menu li.active ul.sub li.active a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li {\n  margin-bottom: 5px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\nul.sidebar-menu li.sub-menu {\n  line-height: 15px; }\n\nul.sidebar-menu li a span {\n  display: inline-block; }\n\nul.sidebar-menu li a {\n  color: #aeb2b7;\n  text-decoration: none;\n  display: block;\n  padding: 15px 0 15px 10px;\n  font-size: 12px;\n  outline: none;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li.active > a, ul.sidebar-menu li:hover > a, ul.sidebar-menu li:focus > a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li a i {\n  font-size: 15px;\n  padding-right: 6px; }\n\nul.sidebar-menu li:hover i, ul.sidebar-menu li:focus i {\n  color: #fff; }\n\nul.sidebar-menu li.active i {\n  color: #fff; }\n\n.centered {\n  text-align: center; }\n", ""]);
+exports.push([module.i, "#sidebar {\n  width: 210px;\n  height: calc(100% - 50px);\n  position: fixed;\n  background: #424a5d; }\n  #sidebar h5 {\n    color: #f2f2f2;\n    font-weight: 700; }\n  #sidebar ul li {\n    position: relative; }\n  #sidebar .sub-menu > .sub li {\n    padding-left: 32px; }\n  #sidebar .sub-menu > .sub li:last-child {\n    padding-bottom: 10px; }\n\n#sidebar > ul > li > ul.sub {\n  display: none; }\n\n#sidebar > ul > li.active > ul.sub {\n  display: block; }\n\nul.sidebar-menu, ul.sidebar-menu li ul.sub {\n  margin: -2px 0 0;\n  padding: 0; }\n\nul.sidebar-menu {\n  margin-top: 10px; }\n\nul.sidebar-menu li ul.sub li {\n  background: #424a5d;\n  margin-bottom: 0;\n  margin-left: 0;\n  margin-right: 0; }\n\nul.sidebar-menu li ul.sub li:last-child {\n  border-radius: 0 0 4px 4px;\n  -webkit-border-radius: 0 0 4px 4px; }\n\nul.sidebar-menu li ul.sub li a {\n  font-size: 12px;\n  padding: 15px 10px;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #aeb2b7; }\n\nul.sidebar-menu li:nth-child(3) ul.sub {\n  visibility: hidden; }\n\nul.sidebar-menu li ul.sub li a:hover {\n  color: white;\n  background: transparent; }\n\nul.sidebar-menu li.active ul.sub li.active a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li {\n  margin-bottom: 5px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\nul.sidebar-menu li.sub-menu {\n  line-height: 15px; }\n\nul.sidebar-menu li a span {\n  display: inline-block; }\n\nul.sidebar-menu li a {\n  color: #aeb2b7;\n  text-decoration: none;\n  display: block;\n  padding: 15px 0 15px 10px;\n  font-size: 12px;\n  outline: none;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li.active > a, ul.sidebar-menu li:hover > a, ul.sidebar-menu li:focus > a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li a i {\n  font-size: 15px;\n  padding-right: 6px; }\n\nul.sidebar-menu li:hover i, ul.sidebar-menu li:focus i {\n  color: #fff; }\n\nul.sidebar-menu li.active i {\n  color: #fff; }\n\n.centered {\n  text-align: center; }\n", ""]);
 
 // exports
 
@@ -39132,45 +39132,48 @@ var Section = function (_React$Component) {
             }
             */
             var showStyle = {
-                display: this.state.show == 0 ? "none" : "block"
+                display: this.state.show == 1 && this.props.active == 7 ? "block" : "none"
+            };
+            var scrollStyle = {
+                overflowY: this.state.show == 1 && this.props.active == 7 ? "hidden" : "auto"
             };
             return React.createElement(
                 "section",
                 { id: "main-content" },
                 React.createElement(
                     "div",
-                    { className: this.props.active == 1 ? "active" : "" },
+                    { className: this.props.active == 1 ? "active contentdiv" : "contentdiv" },
                     this.props.active,
                     "1"
                 ),
                 React.createElement(
                     "div",
-                    null,
+                    { className: "contentdiv" },
                     "2"
                 ),
                 React.createElement(
                     "div",
-                    null,
+                    { className: "contentdiv" },
                     "3"
                 ),
                 React.createElement(
                     "div",
-                    null,
+                    { className: "contentdiv" },
                     "4"
                 ),
                 React.createElement(
                     "div",
-                    null,
+                    { className: "contentdiv" },
                     "5"
                 ),
                 React.createElement(
                     "div",
-                    null,
+                    { className: "contentdiv" },
                     "6"
                 ),
                 React.createElement(
                     "div",
-                    { className: this.props.active == 7 ? "active imgcontainer" : "imgcontainer" },
+                    { className: this.props.active == 7 ? "active imgcontainer contentdiv" : "imgcontainer contentdiv", style: scrollStyle },
                     React.createElement(
                         "div",
                         { className: "imglist" },
@@ -39232,7 +39235,7 @@ exports = module.exports = __webpack_require__(54)(undefined);
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n#main-content {\n  margin-left: 210px;\n  height: 100%;\n  /* width:calc(100% - 210px) */\n  position: fixed;\n  overflow-y: auto; }\n  #main-content > div {\n    display: none; }\n  #main-content > .showarea {\n    position: absolute;\n    z-index: 101; }\n  #main-content > .cover {\n    width: 100%;\n    height: 100%;\n    background-color: #000;\n    opacity: .6;\n    position: absolute;\n    top: 0;\n    left: 0; }\n  #main-content .active {\n    display: block; }\n  #main-content .imgcontainer {\n    padding: 5px;\n    margin: 0 auto; }\n  #main-content .imglist {\n    -moz-column-count: 4;\n    /* Firefox */\n    -webkit-column-count: 4;\n    /* Safari 和 Chrome */\n    column-count: 4;\n    -moz-column-gap: 1em;\n    -webkit-column-gap: 1em;\n    column-gap: 1em; }\n  #main-content .item {\n    margin: 0 0 1em 0;\n    -moz-page-break-inside: avoid;\n    -webkit-column-break-inside: avoid;\n    break-inside: avoid;\n    border: 1px solid #f4f4f4; }\n  #main-content .item img {\n    width: 100%; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n#main-content {\n  margin-left: 210px;\n  height: calc(100% - 50px);\n  /* width:calc(100% - 210px) */\n  position: fixed; }\n  #main-content > div {\n    display: none; }\n  #main-content > .contentdiv {\n    height: 100%; }\n  #main-content > div::-webkit-scrollbar {\n    width: 12px; }\n  #main-content > div::-webkit-scrollbar-track {\n    background-color: #ddd;\n    border-radius: 10px; }\n  #main-content > div::-webkit-scrollbar-thumb {\n    border-radius: 10px;\n    background-color: rgba(66, 74, 93, 0.8); }\n  #main-content > .showarea {\n    position: absolute;\n    z-index: 101; }\n  #main-content > .cover {\n    width: 100%;\n    height: 100%;\n    background-color: #000;\n    opacity: .6;\n    position: absolute;\n    top: 0;\n    left: 0; }\n  #main-content .active {\n    display: block; }\n  #main-content .imgcontainer {\n    padding: 5px;\n    margin: 0 auto; }\n  #main-content .imglist {\n    -moz-column-count: 4;\n    /* Firefox */\n    -webkit-column-count: 4;\n    /* Safari 和 Chrome */\n    column-count: 4;\n    -moz-column-gap: 1em;\n    -webkit-column-gap: 1em;\n    column-gap: 1em; }\n  #main-content .item {\n    margin: 0 0 1em 0;\n    -moz-page-break-inside: avoid;\n    -webkit-column-break-inside: avoid;\n    break-inside: avoid;\n    border: 1px solid #f4f4f4; }\n  #main-content .item img {\n    width: 100%; }\n", ""]);
 
 // exports
 
