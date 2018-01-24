@@ -18,7 +18,7 @@ class Navi extends React.Component {
             <Navbar inverse collapseOnSelect className="navi">
                 <Navbar.Header>
 
-                    <a href="#"><img src="../images/navi-logo.jpg" className="logo"/></a>
+                    <a href="#"><img src="navi-logo.jpg" className="logo"/></a>
 
                     <Navbar.Toggle />
                 </Navbar.Header>

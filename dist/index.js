@@ -26490,8 +26490,11 @@ var MainPage = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 
-        _this.state = {};
+        _this.state = {
+            active: 1
+        };
         //this.handleChange = this.handleChange.bind(this);
+        _this.changeActive = _this.changeActive.bind(_this);
         return _this;
     }
     /*
@@ -26503,14 +26506,24 @@ var MainPage = function (_React$Component) {
 
 
     _createClass(MainPage, [{
+        key: "changeActive",
+        value: function changeActive(n) {
+            if (n == this.state.active) {
+                return false;
+            }
+            this.setState({
+                active: n
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 { id: "container" },
                 React.createElement(Navi, null),
-                React.createElement(Aside, null),
-                React.createElement(Section, null)
+                React.createElement(Aside, { changeActive: this.changeActive }),
+                React.createElement(Section, { active: this.state.active })
             );
         }
     }]);
@@ -26707,7 +26720,7 @@ var Navi = function (_React$Component) {
                     React.createElement(
                         "a",
                         { href: "#" },
-                        React.createElement("img", { src: "../images/navi-logo.jpg", className: "logo" })
+                        React.createElement("img", { src: "navi-logo.jpg", className: "logo" })
                     ),
                     React.createElement(Navbar.Toggle, null)
                 ),
@@ -38718,8 +38731,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _tools = __webpack_require__(298);
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -38758,31 +38769,27 @@ var Aside = function (_React$Component) {
     }, {
         key: "handleClick",
         value: function handleClick(n) {
+            //在这个事件上，.sub-menu和.sub>li是平级的
             if (n) {
-                this.setState({
-                    itemActive: n
-                });
+
+                if (n == 2) {
+                    //在.sub>li层时，需要设置，用于二级菜单选中
+                    this.setState({
+                        itemActive: n
+                    });
+                    this.props.changeActive(7);
+                } else if (n == 1) {
+                    //在.sub-menu层时，需要清除设置，相当于清除了原来选中的二级菜单的选中状态
+                    this.setState({
+                        itemActive: 0
+                    });
+                    this.props.changeActive(1);
+                } else if (n == 99) {
+                    this.setState({
+                        itemActive: n
+                    });
+                }
             }
-        }
-    }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            /*
-            var list = document.getElementsByClassName("sub-menu");
-            for(let i = 0;i < list.length;i ++){
-                let item = list[i];
-                item.addEventListener("click",(e)=>{
-            //'this' is the module 'Aside'!!
-                    var p = item.parentNode;
-                    var l = p.getElementsByClassName("sub-menu");
-                    for(let j = 0;j < l.length;j++){
-                        let a = l[j].childNodes[0];
-                        iRemoveClass(a,"active");
-                    }
-                    iAddClass(item.childNodes[0],"active");
-            });
-             }
-             */
         }
     }, {
         key: "render",
@@ -38802,7 +38809,7 @@ var Aside = function (_React$Component) {
                             React.createElement(
                                 "a",
                                 { href: "profile.html" },
-                                React.createElement("img", { src: "../images/ui-sam.jpg", className: "img-circle", width: "60" })
+                                React.createElement("img", { src: "ui-sam.jpg", className: "img-circle", width: "60" })
                             )
                         ),
                         React.createElement(
@@ -38813,7 +38820,7 @@ var Aside = function (_React$Component) {
                         ),
                         React.createElement(
                             "li",
-                            _defineProperty({ className: "sub-menu" }, "className", this.state.active == 1 ? "active" : ""),
+                            { className: this.state.active == 1 ? "sub-menu active" : "sub-menu", onClick: (this.listClick.bind(this, 1), this.handleClick.bind(this, 1)) },
                             React.createElement(
                                 "a",
                                 { href: "#" },
@@ -38913,7 +38920,7 @@ var Aside = function (_React$Component) {
                                 { className: "sub" },
                                 React.createElement(
                                     "li",
-                                    { onClick: this.handleClick.bind(this, 1), className: this.state.active == 7 && this.state.itemActive == 1 ? "active" : "" },
+                                    { onClick: this.handleClick.bind(this, 99), className: this.state.active == 7 && this.state.itemActive == 99 ? "active" : "" },
                                     React.createElement(
                                         "a",
                                         { href: "#" },
@@ -38952,6 +38959,7 @@ module.exports = Aside;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//useless
 var iAddClass = function iAddClass(el, clsname) {
     var val = el.getAttribute("class");
     if (!val) {
@@ -39016,7 +39024,7 @@ exports = module.exports = __webpack_require__(54)(undefined);
 
 
 // module
-exports.push([module.i, "#sidebar {\n  width: 210px;\n  height: 100%;\n  position: fixed;\n  background: #424a5d; }\n  #sidebar h5 {\n    color: #f2f2f2;\n    font-weight: 700; }\n  #sidebar ul li {\n    position: relative; }\n  #sidebar .sub-menu > .sub li {\n    padding-left: 32px; }\n  #sidebar .sub-menu > .sub li:last-child {\n    padding-bottom: 10px; }\n\n#sidebar > ul > li > ul.sub {\n  display: none; }\n\n#sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a {\n  display: block; }\n\nul.sidebar-menu, ul.sidebar-menu li ul.sub {\n  margin: -2px 0 0;\n  padding: 0; }\n\nul.sidebar-menu {\n  margin-top: 10px; }\n\nul.sidebar-menu li ul.sub li {\n  background: #424a5d;\n  margin-bottom: 0;\n  margin-left: 0;\n  margin-right: 0; }\n\nul.sidebar-menu li ul.sub li:last-child {\n  border-radius: 0 0 4px 4px;\n  -webkit-border-radius: 0 0 4px 4px; }\n\nul.sidebar-menu li ul.sub li a {\n  font-size: 12px;\n  padding: 6px 0;\n  line-height: 35px;\n  height: 35px;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #aeb2b7; }\n\nul.sidebar-menu li:nth-child(3) ul.sub {\n  visibility: hidden; }\n\nul.sidebar-menu li ul.sub li a:hover {\n  color: white;\n  background: transparent; }\n\nul.sidebar-menu li.active ul.sub li.active a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li {\n  margin-bottom: 5px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\nul.sidebar-menu li.sub-menu {\n  line-height: 15px; }\n\nul.sidebar-menu li a span {\n  display: inline-block; }\n\nul.sidebar-menu li a {\n  color: #aeb2b7;\n  text-decoration: none;\n  display: block;\n  padding: 15px 0 15px 10px;\n  font-size: 12px;\n  outline: none;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li.active > a, ul.sidebar-menu li:hover > a, ul.sidebar-menu li:focus > a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li a i {\n  font-size: 15px;\n  padding-right: 6px; }\n\nul.sidebar-menu li:hover i, ul.sidebar-menu li:focus i {\n  color: #fff; }\n\nul.sidebar-menu li.active i {\n  color: #fff; }\n\n.centered {\n  text-align: center; }\n", ""]);
+exports.push([module.i, "#sidebar {\n  width: 210px;\n  height: 100%;\n  position: fixed;\n  background: #424a5d; }\n  #sidebar h5 {\n    color: #f2f2f2;\n    font-weight: 700; }\n  #sidebar ul li {\n    position: relative; }\n  #sidebar .sub-menu > .sub li {\n    padding-left: 32px; }\n  #sidebar .sub-menu > .sub li:last-child {\n    padding-bottom: 10px; }\n\n#sidebar > ul > li > ul.sub {\n  display: none; }\n\n#sidebar > ul > li.active > ul.sub {\n  display: block; }\n\nul.sidebar-menu, ul.sidebar-menu li ul.sub {\n  margin: -2px 0 0;\n  padding: 0; }\n\nul.sidebar-menu {\n  margin-top: 10px; }\n\nul.sidebar-menu li ul.sub li {\n  background: #424a5d;\n  margin-bottom: 0;\n  margin-left: 0;\n  margin-right: 0; }\n\nul.sidebar-menu li ul.sub li:last-child {\n  border-radius: 0 0 4px 4px;\n  -webkit-border-radius: 0 0 4px 4px; }\n\nul.sidebar-menu li ul.sub li a {\n  font-size: 12px;\n  padding: 15px 10px;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n  color: #aeb2b7; }\n\nul.sidebar-menu li:nth-child(3) ul.sub {\n  visibility: hidden; }\n\nul.sidebar-menu li ul.sub li a:hover {\n  color: white;\n  background: transparent; }\n\nul.sidebar-menu li.active ul.sub li.active a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li {\n  margin-bottom: 5px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\nul.sidebar-menu li.sub-menu {\n  line-height: 15px; }\n\nul.sidebar-menu li a span {\n  display: inline-block; }\n\nul.sidebar-menu li a {\n  color: #aeb2b7;\n  text-decoration: none;\n  display: block;\n  padding: 15px 0 15px 10px;\n  font-size: 12px;\n  outline: none;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li.active > a, ul.sidebar-menu li:hover > a, ul.sidebar-menu li:focus > a {\n  background: #68dff0;\n  color: #fff;\n  display: block;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -o-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease; }\n\nul.sidebar-menu li a i {\n  font-size: 15px;\n  padding-right: 6px; }\n\nul.sidebar-menu li:hover i, ul.sidebar-menu li:focus i {\n  color: #fff; }\n\nul.sidebar-menu li.active i {\n  color: #fff; }\n\n.centered {\n  text-align: center; }\n", ""]);
 
 // exports
 
@@ -39047,50 +39055,134 @@ var Section = function (_React$Component) {
     function Section(props) {
         _classCallCheck(this, Section);
 
-        return _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).call(this, props));
+
+        _this.state = {
+            imgs: [],
+            show: 0,
+            url: ""
+        };
+        _this.imgClick = _this.imgClick.bind(_this);
+        _this.closeShow = _this.closeShow.bind(_this);
+        return _this;
     }
 
     _createClass(Section, [{
+        key: "imgClick",
+        value: function imgClick(event) {
+            var img = event.target;
+            this.setState({ url: img.getAttribute("src"), show: 1 });
+        }
+    }, {
+        key: "closeShow",
+        value: function closeShow(event) {
+            this.setState({ show: 0 });
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var mod = this;
+            var url = '/getImgs';
+            fetch(url, {
+                method: "Get",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+            }).then(function (response) {
+                response.status; //=> number 100–599
+                response.statusText; //=> String
+                response.headers; //=> Headers
+                response.url; //=> String
+                response.text().then(function (responseText) {
+                    var list = [];
+                    for (var i = 1; i < 73; i++) {
+                        list.push(React.createElement(
+                            "div",
+                            { className: "item", key: "Images" + i },
+                            React.createElement("img", { src: "images/list/Images" + i + ".jpg", onClick: mod.imgClick.bind(this) })
+                        ));
+                    }
+                    mod.setState({ imgs: list });
+                });
+            }, function (error) {
+                error.message; //=> String
+            });
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            if (this.state.show) {
+                var el = document.getElementsByClassName("showarea")[0];
+                el.style.left = "calc(50% - " + el.offsetWidth / 2 + "px)";
+                el.style.top = "calc(50% - " + el.offsetHeight / 2 + "px)";
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
+            /*
+            var imgs = [];
+            for (var i = 1;i < 73;i ++){
+                imgs.push(
+                    <div class="item">
+                        <img src={"../resource/images/list/Images"+i+".jpg"} />
+                    </div>
+                )
+            }
+            */
+            var showStyle = {
+                display: this.state.show == 0 ? "none" : "block"
+            };
             return React.createElement(
                 "section",
                 { id: "main-content" },
                 React.createElement(
                     "div",
-                    { className: "active", sectionId: "1" },
+                    { className: this.props.active == 1 ? "active" : "" },
+                    this.props.active,
                     "1"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "2" },
+                    null,
                     "2"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "3" },
+                    null,
                     "3"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "4" },
+                    null,
                     "4"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "5" },
+                    null,
                     "5"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "6" },
+                    null,
                     "6"
                 ),
                 React.createElement(
                     "div",
-                    { sectionId: "7" },
-                    "7"
-                )
+                    { className: this.props.active == 7 ? "active imgcontainer" : "imgcontainer" },
+                    React.createElement(
+                        "div",
+                        { className: "imglist" },
+                        this.state.imgs
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "showarea", style: showStyle, onClick: this.closeShow.bind(this) },
+                    React.createElement("img", { src: this.state.url })
+                ),
+                React.createElement("div", { className: "cover", style: showStyle })
             );
         }
     }]);
@@ -39140,7 +39232,7 @@ exports = module.exports = __webpack_require__(54)(undefined);
 
 
 // module
-exports.push([module.i, "#main-content {\n  margin-left: 210px; }\n  #main-content div {\n    display: none; }\n  #main-content .active {\n    display: block; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n#main-content {\n  margin-left: 210px;\n  height: 100%;\n  /* width:calc(100% - 210px) */\n  position: fixed;\n  overflow-y: auto; }\n  #main-content > div {\n    display: none; }\n  #main-content > .showarea {\n    position: absolute;\n    z-index: 101; }\n  #main-content > .cover {\n    width: 100%;\n    height: 100%;\n    background-color: #000;\n    opacity: .6;\n    position: absolute;\n    top: 0;\n    left: 0; }\n  #main-content .active {\n    display: block; }\n  #main-content .imgcontainer {\n    padding: 5px;\n    margin: 0 auto; }\n  #main-content .imglist {\n    -moz-column-count: 4;\n    /* Firefox */\n    -webkit-column-count: 4;\n    /* Safari 和 Chrome */\n    column-count: 4;\n    -moz-column-gap: 1em;\n    -webkit-column-gap: 1em;\n    column-gap: 1em; }\n  #main-content .item {\n    margin: 0 0 1em 0;\n    -moz-page-break-inside: avoid;\n    -webkit-column-break-inside: avoid;\n    break-inside: avoid;\n    border: 1px solid #f4f4f4; }\n  #main-content .item img {\n    width: 100%; }\n", ""]);
 
 // exports
 

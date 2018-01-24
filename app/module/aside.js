@@ -19,25 +19,36 @@ class Aside extends React.Component {
             })
         }
     }
-    handleClick(n) {
+    handleClick(n) {//在这个事件上，.sub-menu和.sub>li是平级的
         if(n){
-            this.setState({
-                itemActive:n
-            })
-        }
-    }
-    componentDidMount() {
 
+            if(n == 2){//在.sub>li层时，需要设置，用于二级菜单选中
+                this.setState({
+                    itemActive:n
+                });
+                this.props.changeActive(7);
+            }else if(n == 1){//在.sub-menu层时，需要清除设置，相当于清除了原来选中的二级菜单的选中状态
+                this.setState({
+                    itemActive:0
+                });
+                this.props.changeActive(1);
+            }else if(n == 99){
+                this.setState({
+                    itemActive:n
+                });
+            }
+
+        }
     }
     render() {
         return (
             <aside className="aside">
                 <div id="sidebar"  className="nav-collapse ">
         			<ul className="sidebar-menu" id="nav-accordion">
-        				<p className="centered"><a href="profile.html"><img src="../images/ui-sam.jpg" className="img-circle" width="60"/></a></p>
+        				<p className="centered"><a href="profile.html"><img src="ui-sam.jpg" className="img-circle" width="60"/></a></p>
         				<h5 className="centered">Marcel Newman{this.state.active}</h5>
 
-                        <li className="sub-menu" className={this.state.active==1?"active":""}>
+                        <li className={this.state.active==1?"sub-menu active":"sub-menu"} onClick={this.listClick.bind(this,1),this.handleClick.bind(this,1)}>
         					<a href="#">
         						<i className="fa fa-dashboard"></i>
         						<span>Dashboard</span>
@@ -81,7 +92,7 @@ class Aside extends React.Component {
         						<span>Charts</span>
         					</a>
         					<ul className="sub">
-        						<li onClick={this.handleClick.bind(this,1)} className={this.state.active==7&&this.state.itemActive==1?"active":""}><a href="#">Images</a></li>
+        						<li onClick={this.handleClick.bind(this,99)} className={this.state.active==7&&this.state.itemActive==99?"active":""}><a href="#">Images</a></li>
         						<li onClick={this.handleClick.bind(this,2)} className={this.state.active==7&&this.state.itemActive==2?"active":""}><a href="#">Chartjs</a></li>
         					</ul>
         				</li>

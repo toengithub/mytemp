@@ -8,8 +8,10 @@ class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            active:1
         };
         //this.handleChange = this.handleChange.bind(this);
+        this.changeActive = this.changeActive.bind(this);
     }
     /*
     handleChange(event) {
@@ -18,11 +20,19 @@ class MainPage extends React.Component {
         });
     }
     */
+    changeActive(n) {
+        if(n == this.state.active){
+            return false
+        }
+        this.setState({
+            active:n
+        })
+    }
     render() {
         return (
             <div id="container">
                 <Navi/>
-                <Aside/>
+                <Aside changeActive={this.changeActive}/>
                 <Section active={this.state.active}/>
             </div>
         );
